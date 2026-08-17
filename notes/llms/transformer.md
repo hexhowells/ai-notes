@@ -6,9 +6,9 @@ $$
 p(x) = \prod_{i=1}^{n} p(s_i \mid s_1, \dots, s+{i-1})
 $$
 
-<!---
+
 ![transformer architecture](https://github.com/hexhowells/ai-notes/blob/main/images/llms/transformer.png)
---->
+
 
 #### Token embedding
 Converts the one-hot encoded token vectors into learned embeddings.
