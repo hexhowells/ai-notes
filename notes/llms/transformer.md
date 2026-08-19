@@ -25,6 +25,12 @@ T \in \mathbb{R}^{d_{\text{vocab}} } \\
 E \in \mathbb{R}^{d_{\text{vocab}} \times d_{\text{embed}}}
 \end{gather}
 ```
+<br>
+Add in position encoding so the LLM knows the tokens position in the text
+
+```math
+X_{embed} = X_{embed} + X_{pos}
+```
 
 #### Attention mechanism
 
@@ -40,5 +46,22 @@ E \in \mathbb{R}^{d_{\text{vocab}} \times d_{\text{embed}}}
 \text{where } \text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)
 \end{gather}
 ```
+
+Feature embedding is split into three projection matrices (Q, K, V)
+```math
+\begin{gather}
+W_{i}^{Q} \in \mathbb{R}^{d_{model} \times d_{K}} \\
+W_{i}^{K} \in \mathbb{R}^{d_{model} \times d_{K}} \\
+W_{i}^{V} \in \mathbb{R}^{d_{model} \times d_{v}} \\
+and \\
+W_{i}^{O} \in \mathbb{R}^{hd_{d} \times d_{model}}
+\end{gather}
+```
+
+#### Residuals and Normalisation
+The original transformer architecture used post-later normalisation, all modern implementations perform normalisation before the MHA & linear layers/
+
+Inputs to layers are also added to layer outputs via residual connections. The residual can be thought of as a single trunk that connects the input embedding through all the blocks into the output embedding. The MHA and feed-forward layers read and write to the trunk, modifying it. The primary purpose of the MHA layer is to manipulate the attention between tokens, and the feed-forward layers perform the "computation", deriving certain logic from the selected tokens / embeddings.
+
 
 
