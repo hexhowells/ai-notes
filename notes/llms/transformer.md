@@ -38,6 +38,13 @@ X_{embed} = X_{embed} + X_{pos}
 \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}} + M\right)V
 ```
 
+```math
+\begin{gather}
+\sqrt{d_{k}} = \text{scaling factor to prevent vanishing softmax gradients} \\
+M = \text{masking matrix}
+\end{gather}
+```
+
 
 #### Multi-headed attention
 ```math
