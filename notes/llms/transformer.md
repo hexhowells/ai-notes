@@ -66,7 +66,7 @@ W_{i}^{O} \in \mathbb{R}^{hd_{d} \times d_{model}}
 ```
 
 #### Residuals and Normalisation
-The original transformer architecture used post-later normalisation, all modern implementations perform normalisation before the MHA & linear layers/
+The original transformer architecture used post-later normalisation, all modern implementations perform normalisation before the MHA & linear layers.
 
 Inputs to layers are also added to layer outputs via residual connections. The residual can be thought of as a single trunk that connects the input embedding through all the blocks into the output embedding. The MHA and feed-forward layers read and write to the trunk, modifying it. The primary purpose of the MHA layer is to manipulate the attention between tokens, and the feed-forward layers perform the "computation", deriving certain logic from the selected tokens / embeddings.
 
