@@ -46,6 +46,10 @@ M = \text{masking matrix}
 \end{gather}
 ```
 
+Since our input sequence is of length $d_{seq}$ and the dimensions hold throughout the model, the output dimensions also contain a sequence length of $d_{seq}$, for each index in $seq$ the equivalent output index pairs to the prediction of the next token $seq[idx+1]$.
+
+For inference, only the last dimension in $d_{seq}$ is used for the next token distribution. During training however this can be leveraged to predict+backprop over each token prediction in the input sequence. Given $d_{seq} = 1024$ we effectively can do 1024 forward and backward passes. To ensure no information about future tokens are known a causal mask ($M$) is applied during attention.
+
 
 #### Multi-headed attention
 ```math
