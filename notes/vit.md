@@ -76,3 +76,5 @@ where, \quad M = HW / p^2
 \end{gather}
 ```
 
+Since bicubic interpolation acts as a low-pass filter, upscaling the grid averages out the sharp, high-frequency boundaries between patches. The higher you try to scale the positional embeddings, the wider this averaging becomes, and since the pre-trained attention heads are optimised for high frequency values, this smoothing causes local spatial boundaries to "smear". As such, scaling the resolution this way only works so far, scaling the image too high causes the delta to become too large, drastically effecting performance.
+
