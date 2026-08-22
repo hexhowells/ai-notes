@@ -23,3 +23,15 @@ A_33 = (Q_31 * K_31) + (Q_32 * K_32)
 
 From the above, we can see that all rows of K are used to compute the last row of attention scores (for the next predicted token), however only the last row of Q (the most recent token) is used. V carries the same dependencies as K.
 
+Following this, the other rows of the attention matrix (and the output of the MHA layer) do not change as due to the causal mask, they are not affected by new tokens. So when these rows are propagated into the next block, they are used to compute that block's K and V values... which have not changed (and are already cached). Hence we do not need to compute the other rows of the attention block (and thus only need the last row / token from Q).
+
+As such, the matrix multiply between Q and K for the attention layer become
+
+```text
+
+ .   .   .      K11 K21 K31      .   .   .
+ .   .   .   x  K12 K22 K32  =   .   .   .   Mask
+Q31 Q32 Q33     K13 K23 K33     A31 A32 A33        A31 A32 A33
+```
+
+So we only compute the attention scores for the most recent token (which require the last row of Q, but all rows for K and V).
