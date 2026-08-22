@@ -16,4 +16,21 @@ x_{p} \in \mathbb{R}^{N \times (P^2 \cdot C)}
 
 Where $(H, W)$ is the resolution of the original image, $C$ is the number of channels, $(P,P)$ is the patch resolution, and $N = HW / P^2$ is the number of patches (and sequence length of the transformer).
 
+#### Example
+```
+Input image
+# # # @
+@ @ @ #
+# @ # #
+@ # # @
 
+Patches
+# # | # @
+@ @ | @ #
+----+----
+# @ | # #
+@ # | # @
+
+# Flattened patch tokens
+[# # @ @], [# @ @ #], [# @ @ #], [# # # @]
+```
