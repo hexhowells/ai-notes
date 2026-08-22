@@ -1,4 +1,5 @@
 # Transformers
+> Original paper: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 
 The core objective of an autoregressive language model is the joint probability of a full sequence x (comprised of n tokens) as the product of the conditional probabilities of each token s_i, given all preceding tokens.
 
