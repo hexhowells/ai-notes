@@ -49,3 +49,30 @@ Patches
 # Flattened patch tokens
 [# # @ @], [# @ @ #], [# @ @ #], [# # # @]
 ```
+
+## Resolution scaling
+Scaling up the input image after pre-training is simple in terms of adding more patches (assuming the same patch size), resulting in the sequence length increasing, which is easily handled by a transformer. However, adding more patch tokens corrupts the information in the position embeddings (since for example, the position of the bottom right token is no longer representing the bottom right patch if more patches have been added).
+
+To resolve this the position embedding is spatially scaled with bicubic interpolation. Given the position embedding $E_{pos} \in \mathbb{R}^{(N+1) \times D}$, isolate the spatial tokens (remove the class token) $E_{pos} \in \mathbb{R}^{(N) \times D}$.
+
+You can then reshape the spatial embeddings into a grid
+
+```math
+E_{grid} = Reshape(E_{spatial}) \in \mathbb{R}^{D \times \sqrt{N} \times \sqrt{N}}
+```
+
+Given the 2D grid of spatial tokens, apply a 2D bicubic interpolation function to increase the resolution to the new number of patches $M$.
+
+```math
+E_{scaled} = Interpolate_{bicubic}(E_{grid}) \in \mathbb{R}^{D \times \sqrt{M} \times \sqrt{M}}
+```
+
+The scaled grid can then be flattened and the class token prepended.
+
+```math
+\begin{gather}
+E_{pos[scaled]} \in \mathbb{R}^{(M+1) \times D} \\
+where, \quad M = HW / p^2
+\end{gather}
+```
+
