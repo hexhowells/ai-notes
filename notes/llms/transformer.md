@@ -21,8 +21,9 @@ Where,
 
 ```math
 \begin{gather}
-T \in \mathbb{R}^{d_{\text{vocab}} } \\
-E \in \mathbb{R}^{d_{\text{vocab}} \times d_{\text{embed}}}
+T \in \mathbb{R}^{d_{batch} \times d_{seq}} \\
+E \in \mathbb{R}^{d_{\text{vocab}} \times d_{\text{embed}}} \\
+X_{embed} \in \mathbb{R}^{d_{batch} \times d_{seq} \times d_{embed}}
 \end{gather}
 ```
 <br>
