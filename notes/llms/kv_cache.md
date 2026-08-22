@@ -1,4 +1,5 @@
 # KV Caching
+> Original paper [Efficiently Scaling Transformer Inference](https://arxiv.org/abs/2211.05102)
 
 LLM inference natively requires $O(T^2)$ compute as to predict $y_{t}$ we need to re-evaluate all past tokens. KV caching reduces this to $O(T)$ by caching K and V for each layer, as under causal masking these states remain static.
 
