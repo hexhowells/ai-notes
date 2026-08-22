@@ -43,5 +43,6 @@ Given the above, KV caching performs the following:
 - Caches the K and V tensors for each layer
 - Computes the attention scores for only the most recent token
 - Computes the MLP for only the most recent token
+- Masking is only applied during pre-fill phase and is not required during decoding
 
 This caching and reduction in compute drops the compute down to $O(1)$ with respect to the sequence length.
