@@ -34,4 +34,13 @@ As such, the matrix multiply between Q and K for the attention layer become
 Q31 Q32 Q33     K13 K23 K33     A31 A32 A33        A31 A32 A33
 ```
 
-So we only compute the attention scores for the most recent token (which require the last row of Q, but all rows for K and V).
+So we only compute the attention scores for the most recent token (which require the last row of Q, but all rows for K and V). Similarly we only compute the MLP for the most recent token.
+
+---
+
+Given the above, KV caching performs the following:
+- Caches the K and V tensors for each layer
+- Computes the attention scores for only the most recent token
+- Computes the MLP for only the most recent token
+
+This caching and reduction in compute drops the compute down to $O(1)$ with respect to the sequence length.
