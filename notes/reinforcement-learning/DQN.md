@@ -1,5 +1,7 @@
 # Deep Q-Network
 
+> Original paper: [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602)
+
 [Deep Q-Network](https://www.nature.com/articles/nature14236) is an expansion on reinforcement learning algorithm [Q-learning](https://en.wikipedia.org/wiki/Q-learning), in which the q-value function is approximated using neural networks.
 
 Here, you have an agent which acts within an environment using a discrete set of actions taken at timesteps, certain states within the environment produce reward values in which the agent is trying to maximise.
