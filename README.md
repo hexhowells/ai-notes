@@ -2,6 +2,9 @@
 
 Notes on everything I know about AI.
 
+---
+
+### Todo
 Various things that have yet to be added:
 - Backpropagation + foundational math (linear algebra, chain rule, etc)
 - Gradient descent, optimisation algorihtms
