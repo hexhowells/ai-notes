@@ -84,3 +84,21 @@ where, \quad M = HW / p^2
 
 Since bicubic interpolation acts as a low-pass filter, upscaling the grid averages out the sharp, high-frequency boundaries between patches. The higher you try to scale the positional embeddings, the wider this averaging becomes, and since the pre-trained attention heads are optimised for high frequency values, this smoothing causes local spatial boundaries to "smear". As such, scaling the resolution this way only works so far, scaling the image too high causes the delta to become too large, drastically effecting performance.
 
+## Stochastic Depth
+Instead of applying dropout to random weights. Stochastic depth (aka DropPath) drops entire blocks from a residual network (just passing data through the residual branch).
+
+Given a standard ViT block
+
+```math
+x = x + f(x)
+```
+where $f(x)$ is either the MLA or MLP block. We can apply stochastic depth with
+
+```math
+x = x + \frac{b}{1-p} f(x)
+```
+
+Where $b \in \{0, 1\}$ is a Bernoulli random variable. 
+
+With a probability $p$, the branch is bypassed completely (b=0). With (b=1), the output of the block is scaled by $\frac{1}{1-p}$ to maintain the expected mean of the activations. During inference, this is completely disabled.
+
