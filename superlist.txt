@@ -1,6 +1,6 @@
-###									                                                          ###
-# Rough superlist of all things I know of the top of my head and need notes for #
-###									                                                          ###
+###
+# Rough superlist of all things I know of the top of my head and need notes for
+###
 
 Backpropagation + foundational math (linear algebra, chain rule, etc)
 - linear algebra (matrix multiplications)
