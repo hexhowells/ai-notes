@@ -187,3 +187,5 @@ Misc
 - autoML
 - sparse networks
 - hyperparameter optimisation
+- Autograd engines
+- NeRF
