@@ -30,8 +30,12 @@ E_{pos} \in \mathbb{R}^{(N+1) \times D}
 \end{gather}
 ```
 
+Here, $E$ is a linear projection layer embedding each patch. Every patch shares the same projection layer weights, and thus can be implemented with a convolutional operation where $kernel = P$ and $stride = P$. This also simplifies the processing of channels in the input image.
+
 ## Output Embeddings & Classifications
-Given the input sequence of shape $(B, N, D)$ is retained throughout the model into the output sequence. There are $N$ token distributions in the output. However, classification requires a single 1D vector of size $D$, to resolve this a special `[class]` token is prepended to the input sequence. In the final layer $L$, the 0-th token is isolated $(z_{L}^{0})$ and passed to the classification head, the output spatial patch tokens $(z_{L}^{1}...z_{L}^{N})$ are ignored. The class token is used to incrementally aggregate global information into the single output token via self-attention.
+Given the input sequence of shape $(B, N, D)$ is retained throughout the model into the output sequence. There are $N$ token distributions in the output. However, classification requires a single 1D vector of size $D$, to resolve this a special `[class]` token is prepended to the input sequence. This class token is a learnable where $class token \in \mathbb{R}^{B, N, D}$.
+
+In the final layer $L$, the 0-th token is isolated $(z_{L}^{0})$ and passed to the classification head, the output spatial patch tokens $(z_{L}^{1}...z_{L}^{N})$ are ignored. The class token is used to incrementally aggregate global information into the single output token via self-attention.
 
 #### Example
 ```
