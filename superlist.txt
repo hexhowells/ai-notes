@@ -1,0 +1,189 @@
+###									      ###
+# Rough superlist of all things I know of the top of my head and need notes for #
+###									      ###
+
+Backpropagation + foundational math (linear algebra, chain rule, etc)
+- linear algebra (matrix multiplications)
+- the chain rule
+- differentiation
+- SVD
+- calculus
+- information theory
+- statistics 
+- combinitorics
+
+Gradient descent, optimisation algorithms
+- gradient descent
+- stochastic gradient decent
+- momentum
+- Adam
+- AdamW
+- Muon
+- RMSProp
+- AdaGrad
+- Adafactor
+- Lion
+- Linear warmups
+- Cosine annealing
+- weight decay
+- gradient clipping
+
+Activation functions
+- Sigmoid
+- Tanh
+- ReLU
+- leakyReLU
+- GeLU
+- SeLU
+- ReLU^2
+- Swiglu
+- swish
+- PReLU
+
+Reinforcement learning algorithms (DDQN, A2C, Rainbow, etc)
+- DQN
+- DDQN
+- NEAT
+- Dueling DQN
+- RainbowDQN
+- A2C
+- ICM
+- RND
+- PPO
+- SAC
+- MuZero
+- Dreamer
+
+Convolutional algorithms
+- convs
+- stride
+- padding
+- pooling layers
+- ConvNext
+- residual connections
+- efficient net
+- vision transformer
+- mobilenet
+
+Normalisation
+- batch norm
+- layer norm
+- group norm
+- instance norm
+- weight norm
+
+JEPA, contrastive methods
+- JEPA
+- BYOL
+- DINO
+- I-JEPA
+- V-JEPA
+- CLIP
+- SimCLR
+- Barlow twins
+
+Various LLM optimisations (RMSNorm, RoPE, etc)
+- RoPE
+- RMSNorm
+- MHA
+- MQA
+- GQA
+- flash attention
+- YaRN
+- QK-Norm
+
+Various LLM improvements (MoE, CoT, etc)
+- MoE
+- CoT
+- Verifiable rewards
+- tool use
+
+Finetuning / inference (LoRA, KV-caching, speculative decoding, etc)
+- LoRA
+- QLoRA
+- quantisation
+- kv-caching
+- speculative decoding
+
+LM post-training (RLHF, GRPO, context lengthening, etc)
+- RLHF
+- DPO
+- GRPO
+- SFT
+
+Various rules/laws (scaling laws, curse of dimensionality, lottery ticket hypothesis, etc)
+- chinchilla
+- double descent
+- curse of dimensionality
+- grokking
+
+Interpretability (sparse autoencoders, logit lens, etc)
+- sparse autoencoders
+- logit lens
+- linear probes
+- superposition
+- steering vectors
+- circuit analysis
+
+RNNs, LSTMs, GANs, autoencoders
+- RNNs
+- LSTMs
+- GRUs
+- GANs
+- autoencoders
+- VAE
+- U-net
+- Ensemble networks
+- XGBoost
+
+Neuromorphic Computing
+- Hopfield networks
+- LIAF
+- SNNs
+- STDP
+- Ojas rule
+- predictive coding
+
+Machine learning (linear regression, K-nearest neighbour, MCTS, etc)
+- linear regression
+- k nearest neighbour
+- k means clustering
+- monte carlo tree search
+- random forest
+- logistic regression
+- naive bayes
+- t-SNE
+- UMAP
+- SVM
+- minimax /w alpha-beta pruning
+
+loss functions
+- cross entropy
+- label smoothing
+- Wasserstein loss
+- focal loss
+- MSE (L2)
+- MAE (L1)
+- huber loss
+- contrastive loss
+- ioU (detection)
+- Dice loss
+
+data augmentation
+- Mixup
+- CutMix
+
+Misc
+- Sim2Real
+- mixed precision training
+- gradient accumulation
+- vision language models
+- wav2vec
+- diffusion
+- genetic algorithms
+- RAG
+- weight merging
+- graph networks
+- autoML
+- sparse networks
+- hyperparameter optimisation
