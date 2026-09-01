@@ -1,0 +1,74 @@
+# Activation Functions
+
+## Sigmoid
+Classic activation function, not used much in modern architectures. 
+
+Range: (0, 1)
+
+```math
+\sigma(x) = \frac{1}{1 + e^{-x}}
+```
+
+## Tanh
+Similar to Sigmoid, but increases the range to negative values.
+
+Range: (-1, 1)
+
+```math
+\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} = 2\sigma(2x) - 1
+```
+
+## ReLU (Rectified Linear Unit)
+
+More computationally efficient, and avoids vanishing gradients.
+
+Range: $[0, \infty)$
+```math
+\text{ReLU}(x) = \max(0, x)
+```
+
+## LeakyReLU
+Similar to ReLU but allows small negative values to mitigate dying neurons due to zero gradients.
+
+Range: $(-\infty, \infty)$
+
+```math
+\text{LeakyReLU}(x) = \max(\alpha x, x) = \begin{cases} x & \text{if } x \ge 0 \\ \alpha x & \text{if } x < 0 \end{cases} \quad (\text{typically } \alpha \approx 0.01)
+```
+
+## ReLU² (Squared ReLU)
+
+Range: $[0, \infty)$
+```math
+\text{ReLU}^2(x) = (\max(0, x))^2
+```
+
+## PReLU (Parametric ReLU)
+Includes learnable parameters for the negative slope. Allows single layers neurons to solve the XOR problem.
+
+Range: $(-\infty, \infty)$
+
+```math
+\text{PReLU}(x) = \max(a x, x) = \begin{cases} x & \text{if } x \ge 0 \\ a x & \text{if } x < 0 \end{cases}
+```
+
+## GeLU (Gaussian Error Linear Unit)
+
+```math
+\text{GELU}(x) = x \cdot \Phi(x) = x \cdot P(X \le x), \quad X \sim \mathcal{N}(0, 1)
+```
+
+## SeLU (Scaled Exponential Linear Unit)
+```math
+\text{SELU}(x) = \lambda \begin{cases} x & \text{if } x > 0 \\ \alpha (e^x - 1) & \text{if } x \le 0 \end{cases}
+```
+
+## Swish (SiLU)
+```math
+\text{Swish}(x) = x \cdot \sigma(\beta x)
+```
+
+## SwiGLU (Swish Gated Linear Unit)
+```math
+\text{SwiGLU}(x, W, V, b, c) = \text{Swish}(xW + b) \otimes (xV + c)
+```
