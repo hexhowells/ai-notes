@@ -53,6 +53,9 @@ Range: $(-\infty, \infty)$
 ```
 
 ## GeLU (Gaussian Error Linear Unit)
+GeLU merges the properties of ReLUs, dropout, and zoneout into a single activation function. With GeLU the input $x$ is multiplied by $m \sim \text{Bernoulli}(\Phi(x))$. As $x$ becomes more positive, it becomes more likely to be retained.
+
+Instead of computing $m \sim \text{Bernoulli}(\Phi(x))$ which is more computational and introduces stochasticity. We can represent it using the Gaussian Cumulative Distribution Function $\Phi(x)$
 
 ```math
 \text{GELU}(x) = x \cdot \Phi(x) = x \cdot P(X \le x), \quad X \sim \mathcal{N}(0, 1)
