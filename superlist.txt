@@ -11,6 +11,8 @@ Backpropagation + foundational math (linear algebra, chain rule, etc)
 - information theory
 - statistics 
 - combinitorics
+- central limit theorem
+- distributions
 
 Gradient descent, optimisation algorithms
 - gradient descent
