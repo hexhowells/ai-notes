@@ -61,9 +61,18 @@ Instead of computing $m \sim \text{Bernoulli}(\Phi(x))$ which is more computatio
 \text{GELU}(x) = x \cdot \Phi(x) = x \cdot P(X \le x), \quad X \sim \mathcal{N}(0, 1)
 ```
 
-## SeLU (Scaled Exponential Linear Unit)
+## SELU (Scaled Exponential Linear Unit)
+SELU was introduced as a self-normalising activation function. SeLU is designed such that if you pass a distribution of activations with a mean of 0 and variance of 1 through it, the output will naturally preserve a mean of 0 and variance of 1. This effectively eliminates the requirement of batch normalisation.
+
 ```math
-\text{SELU}(x) = \lambda \begin{cases} x & \text{if } x > 0 \\ \alpha (e^x - 1) & \text{if } x \le 0 \end{cases}
+\text{SELU}(x) = \lambda \begin{cases} x & \text{if } x > 0 \\ \alpha (e^x - 1) & \text{if } x \le 0 \end{cases} \\
+```
+where
+```math
+\begin{gather}
+\lambda \approx 1.0507 \\
+\alpha \approx 1.6732
+\end{gather}
 ```
 
 ## Swish (SiLU)
