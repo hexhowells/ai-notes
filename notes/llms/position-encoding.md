@@ -68,3 +68,11 @@ Thus computing the attention score between $Q$ and $K$, the dot product of the r
 (R_{\Theta m}^d q)^T (R_{\Theta n}^d k) = q^T (R_{\Theta m}^d)^T R_{\Theta n}^d k = q^T R_{\Theta n-m}^d k
 ```
 
+#### Implementation
+
+RoPE chunks the rotational matrix (for a single position $m$) into independent 2D pairs and applies a block-diagonal rotation matrix $R_{\Theta m}^d$ to the token embedding
+
+```math
+R_{\Theta m}^d = \begin{pmatrix} \cos m\theta_1 & -\sin m\theta_1 & 0 & 0 & \cdots & 0 & 0 \\ \sin m\theta_1 & \cos m\theta_1 & 0 & 0 & \cdots & 0 & 0 \\ 0 & 0 & \cos m\theta_2 & -\sin m\theta_2 & \cdots & 0 & 0 \\ 0 & 0 & \sin m\theta_2 & \cos m\theta_2 & \cdots & 0 & 0 \\ \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & 0 & 0 & \cdots & \cos m\theta_{d/2} & -\sin m\theta_{d/2} \\ 0 & 0 & 0 & 0 & \cdots & \sin m\theta_{d/2} & \cos m\theta_{d/2} \end{pmatrix}
+```
+
