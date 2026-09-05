@@ -49,8 +49,8 @@ Given two tokens `[cat]` and `[sat]`. Assume the Query value of `[cat]` points t
 
 Now applying a single plane of the RoPE embedding, assume the frequency $\theta$ is 15 degrees per step:
 
-- If $Q$ is at position $m = 3$, it gets rotated by $3 \times 15 = 45 degrees$. Thus its new angle is $10 + 45 = 55 degrees$
-- If $K$ is at position $n = 5$, it gets rotated by $5 \times 15 = 75 degrees$. Thus its new angle is $20 + 75 = 95 degrees$
+- If $Q$ is at position $m = 3$, it gets rotated by $3 \times 15 = \text{45 degrees}$. Thus its new angle is $10 + 45 = \text{55 degrees}$
+- If $K$ is at position $n = 5$, it gets rotated by $5 \times 15 = \text{75 degrees}$. Thus its new angle is $20 + 75 = \text{95 degrees}$
 
 During the attention mechanism, we take the dot product of $Q$ and $K$, the dot product will only care about the new angle between them:
 ```math
@@ -58,4 +58,13 @@ During the attention mechanism, we take the dot product of $Q$ and $K$, the dot 
 ```
 
 Thus the absolute positions are removed during the dot product, and the only positional information that remains is the distance between each token, which is the information we care about.
+
+#### Proof
+Since rotation matrices are orthogonal ($R^T R = I$), the transpose of a rotation matrix is equivalent to rotating in the opposite direction $(R_{\Theta, m}^d)^T = R_{\Theta, -m}^d$
+
+Thus computing the attention score between $Q$ and $K$, the dot product of the rotated vectors reduces to the relative distance:
+
+```math
+(R_{\Theta, m}^d q)^T (R_{\Theta, n}^d k) = q^T (R_{\Theta, m}^d)^T R_{\Theta, n}^d k = q^T R_{\Theta, n-m}^d k
+```
 
