@@ -65,6 +65,6 @@ Since rotation matrices are orthogonal ($R^T R = I$), the transpose of a rotatio
 Thus computing the attention score between $Q$ and $K$, the dot product of the rotated vectors reduces to the relative distance:
 
 ```math
-(R_{\Theta, m}^d q)^T (R_{\Theta, n}^d k) = q^T (R_{\Theta, m}^d)^T R_{\Theta, n}^d k = q^T R_{\Theta, n-m}^d k
+(R_{\Theta m}^d q)^T (R_{\Theta n}^d k) = q^T (R_{\Theta m}^d)^T R_{\Theta n}^d k = q^T R_{\Theta n-m}^d k
 ```
 
