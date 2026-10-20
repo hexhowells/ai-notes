@@ -26,3 +26,30 @@ Whilst TRPO works effectively, it requires large computation to perform (computi
 
 ## PPO
 Proximal Policy Optimisation (PPO) aims to fix the computational issues of TRPO by performing the same checks, but with only first order operations, greatly reducing the computation required.
+
+PPO starts from the same surrogate objective:
+
+$$r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\text{old}}}(a_t \mid s_t)}$$
+
+This ratio measures how the much the new policy changes the probability of choosing the action compared to the old policy
+- If $r_t = 1$: the new and old policy are identical
+- If $r_t > 1$: the action is more likely than before
+- If $r_t < 1$: the action is less likely than before
+
+PPO also retains the advantage metric:
+
+$$\hat{A}_t = R_t - V(s_t)$$
+
+Maximising $L(\theta) = r_t(\theta) \hat{A}_t$ on its own doesn't do anything to prevent the optimiser pushing $r_t$ to large values, breaking the policy.
+
+Where:
+
+- $\hat{A}_t > 0$: the action yielded more reward than usual
+- $\hat{A}_t < 0$: the action yielded less reward than usual
+
+### Clipped Objective
+PPO prevents large updates by clipping the probability ratio if it moves outside of a safe interval $[1 - \epsilon, \, 1 + \epsilon]$ where typically $\epsilon = 0.2$. The full PPO equation can be seen below:
+
+$$L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \Big( r_t(\theta) \hat{A}_t \; \text{clip}\big(r_t(\theta) \, 1-\epsilon \, 1+\epsilon\big) \hat{A}_t \Big) \right]$$
+
+On top of clipping the probability ratio $r_t(\theta)$, PPO also applies `min` to the clipped objective and the original objective.
