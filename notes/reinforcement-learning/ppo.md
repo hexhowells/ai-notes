@@ -52,4 +52,4 @@ PPO prevents large updates by clipping the probability ratio if it moves outside
 
 $$L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \Big( r_t(\theta) \hat{A}_t \; \text{clip}\big(r_t(\theta) \, 1-\epsilon \, 1+\epsilon\big) \hat{A}_t \Big) \right]$$
 
-On top of clipping the probability ratio $r_t(\theta)$, PPO also applies `min` to the clipped objective and the original objective.
+On top of clipping the probability ratio $r_t(\theta)$, PPO also applies `min` to the clipped objective and the original objective. This caps the objective function when the probability changes more than $\epsilon$ in the intended direction, but bypasses the cap if the probability slips past $\epsilon$ in the wrong direction, keeping the gradient active so the optimiser can pull the policy back into the safe zone.
