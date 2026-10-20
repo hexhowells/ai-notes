@@ -10,9 +10,14 @@ Suppose our current policy has weights $\theta_{\text{old}}$, and we want to fin
 $$L(\theta) = \hat{\mathbb{E}}_t \left[ \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\text{old}}}(a_t \mid s_t)} \hat{A}_t \right]$$
 
 where
-- If $\hat{A}_t > 0$ (good action), we want to make $\pi_\theta(a_t \mid s_t)$ bigger than $\pi_{\theta_{\text{old}}}(a_t \mid s_t)$
-- If $\hat{A}_t < 0$ (bad action), we want to make $\pi_\theta(a_t \mid s_t)$ smaller
 
+If $\hat{A}_t > 0$ (good action)
+- we want to make $\pi_\theta(a_t \mid s_t)$ bigger than $\pi_{\theta_{\text{old}}}(a_t \mid s_t)$
+
+If $\hat{A}_t < 0$ (bad action)
+- we want to make $\pi_\theta(a_t \mid s_t)$ smaller
+
+<br>
 To ensure the update is safe, we measure how the action probability shifts using KL divergence. This KL divergence is forced to stay under $\delta$ (usually 0.01).
 
 $$\underset{\theta}{\text{maximize}} \; L(\theta) \quad \text{subject to} \quad \bar{D}_{\text{KL}}(\theta_{\text{old}} \parallel \theta) \le \delta$$
